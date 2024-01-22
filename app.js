@@ -10,7 +10,7 @@ const {stockRouter} = require("./routes/stocks")
 app.use(express.json());
 
 app.use(cors("*"))
-
+app.get("/greet",(req,res)=>res.send("Hello"));
 app.use("/", authRouter);
 app.use("/", stockRouter);
 
