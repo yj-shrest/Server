@@ -15,5 +15,5 @@ app.use("/", authRouter);
 app.use("/", stockRouter);
 
 app.listen(10000,'0.0.0.0', ()=>{
-    console.log("Server listening on port 5000")
+    console.log("Server listening on port 10000")
 })

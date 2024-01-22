@@ -5,7 +5,7 @@ const puppeteerConfig = {
   launch: {
     // Path to the Chromium executable on your system
     executablePath: executablePath(), 
-    headless: false, // Set to false for headful mode
+    headless: true, // Set to false for headful mode
     args: ["--no-sandbox", "--disable-http2"],
   },
 };
@@ -17,11 +17,11 @@ async function scrapeData() {
     const browser = await puppeteer.launch({ ...puppeteerConfig });
     const page = await browser.newPage();
     await page.setViewport({
-        width: 400,
-        height: 600,
+        width: 5000,
+        height: 4000,
         deviceScaleFactor: 1,
       });
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: "networkidle2" });
 
     const stockData = await page.evaluate(() => {
       const rows = Array.from(document.querySelectorAll('.table.live-trading tbody tr'));
